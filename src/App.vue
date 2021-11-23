@@ -22,8 +22,12 @@
 
         <div class="weather-container">
           <div class="temperature">{{ Math.round(weather.main.temp) }}°C</div>
-          <div class="weather-now">{{ weather.weather[0].main }}</div>
+          <div class="weather-now">{{ weather.weather[0].main }} ({{ weather.weather[0].description }})</div>
           <div class="pression-now">{{ weather.main.pressure }} HPa</div>
+        </div>
+
+        <div class="chart-container" v-if="typeof weather.main != 'undefined'">
+          <SimpleChart />
         </div>
       </div>
 
@@ -33,8 +37,13 @@
 
 <script>
 
+import SimpleChart from './components/SimpleChart.vue'
+
 export default {
   name: 'App',
+  components: {
+    SimpleChart
+  },
   data() {
     return {
       api_key: '4a84568d86cf18fd6001eb7685d96f29',
@@ -140,7 +149,6 @@ main {
   border-radius: 15px 0px 15px 0px;
 }
 
-
 .location-container .location {
   color: #FFF;
   font-size: 32px;
@@ -190,6 +198,16 @@ main {
   font-weight: 400;
   font-style: italic;
   text-shadow: 3px 6px rgba(0, 0, 0, 0.25);
+}
+
+#simple-chart {
+  display: block;
+  height: 500px;
+  width: 60%;
+  margin-top: 25px;
+  margin: 0 auto;
+  border: 3px outset black;
+  background-color: #fff;
 }
 
 </style>
