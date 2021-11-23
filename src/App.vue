@@ -23,6 +23,7 @@
         <div class="weather-container">
           <div class="temperature">{{ Math.round(weather.main.temp) }}°C</div>
           <div class="weather-now">{{ weather.weather[0].main }}</div>
+          <div class="pression-now">{{ weather.main.pressure }} HPa</div>
         </div>
       </div>
 
@@ -53,7 +54,7 @@ export default {
     },
     setResults(results) {
       this.weather = results;
-      console.log(this.weather.weather[0]);
+      console.log(this.weather);
     },
     dateRendering() {
       const dayEn = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -61,7 +62,7 @@ export default {
       'September', 'October', 'November', 'December'];
 
       let d = new Date();
-      console.log(d);
+      //console.log(d);
       let seconds = d.getSeconds();
       let minutes = d.getMinutes();
       let hours = d.getHours();
@@ -179,6 +180,14 @@ main {
   color: #FFF;
   font-size: 48px;
   font-weight: 600;
+  font-style: italic;
+  text-shadow: 3px 6px rgba(0, 0, 0, 0.25);
+}
+
+.weather-container .pression-now {
+  color: #FFF;
+  font-size: 34px;
+  font-weight: 400;
   font-style: italic;
   text-shadow: 3px 6px rgba(0, 0, 0, 0.25);
 }
