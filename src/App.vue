@@ -26,9 +26,6 @@
           <div class="pression-now">{{ weather.main.pressure }} HPa</div>
         </div>
 
-        <div class="chart-container" v-if="typeof weather.main != 'undefined'">
-          <SimpleChart />
-        </div>
       </div>
 
     </main>
@@ -37,13 +34,8 @@
 
 <script>
 
-import SimpleChart from './components/SimpleChart.vue'
-
 export default {
   name: 'App',
-  components: {
-    SimpleChart
-  },
   data() {
     return {
       api_key: '4a84568d86cf18fd6001eb7685d96f29',
@@ -107,7 +99,6 @@ body {
 
 #app.warm {
   background-image: url('./assets/warm-weather.jpg');
-
 }
 
 #app.snow {
