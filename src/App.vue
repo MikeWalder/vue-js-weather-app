@@ -15,20 +15,25 @@
       </div>
 
       <div class="weather-wrapping" v-if="typeof weather.main != 'undefined'">
+        
         <div class="location-container">
           <div class="location">{{ weather.name }}, {{ weather.sys.country }}</div>
           <div class="date">{{ dateRendering() }}</div>
         </div>
 
+        <!-- Add the style and icon you want -->
+        <p></p>
+
         <div class="weather-container">
-          <div class="temperature">{{ Math.round(weather.main.temp) }}°C</div>
-          <div class="weather-now">{{ weather.weather[0].main }} ({{ weather.weather[0].description }})</div>
-          <div class="pression-now">{{ weather.main.pressure }} HPa</div>
+          <div class="temperature"> {{ Math.round(weather.main.temp) }}°C <fa icon="temperature-half" /></div>
+          <div class="weather-now"> {{ weather.weather[0].main }} ({{ weather.weather[0].description }}) </div>
+          <div class="pression-now">{{ weather.main.pressure }} HPa - <fa icon="droplet" /> {{ weather.main.humidity }}% </div>
         </div>
 
       </div>
 
     </main>
+
   </div>
 </template>
 
@@ -92,9 +97,12 @@ body {
 
 #app {
   background-image: url('./assets/cold-weather.jpg');
-  background-size: cover;
-  background-position: bottom;
+  background-size: 60% auto;
+  background-position: center;
+  background-repeat: no-repeat;
   transition: 0.4s;
+  border-left: 10px solid black;
+  border-right: 10px solid black;
 }
 
 #app.warm {
@@ -102,27 +110,28 @@ body {
 }
 
 #app.snow {
-  
+  background-image: url('');
 }
 
 main {
   min-height: 100vh;
   padding: 25px;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.8));
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.3));
 }
 
 .searching-box {
   width: 100%;
   margin-bottom: 35px;
+
 }
 
 .searching-box .searching-bar {
   display: block;
-  width: 70%;
+  width: 35%;
   margin: 0 auto;
   padding: 15px;
   color: #313131;
-  font-size: 20px;
+  font-size: 22px;
   appearance: none;
   border: none;
   outline: none;
@@ -151,7 +160,7 @@ main {
 
 .location-container .date {
   color: #FFF;
-  font-size: 20px;
+  font-size: 28px;
   font-weight: 300;
   font-style: italic;
   text-align: center;
@@ -183,7 +192,7 @@ main {
   text-shadow: 3px 6px rgba(0, 0, 0, 0.25);
 }
 
-.weather-container .pression-now {
+.weather-container .pression-now, .humidity {
   color: #FFF;
   font-size: 34px;
   font-weight: 400;
