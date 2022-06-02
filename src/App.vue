@@ -23,7 +23,11 @@
 
         <div class="weather-container">
           <div class="temperature-now"> {{ Math.round(weather.main.temp) }}°C <!-- <fa icon="temperature-half" /> --></div>
-          <div class="weather-now"> {{ weather.weather[0].main }} <!-- ({{ weather.weather[0].description }}) --> </div>
+          <div class="weather-now">
+            <fa icon="sun" v-if="weather.weather[0].main == 'Clear'" />
+            <fa icon="cloud" v-if="weather.weather[0].main == 'Clouds'" />
+            <fa icon="cloud-rain" v-if="weather.weather[0].main == 'Rain'" />
+          </div>
         </div>
 
         <div class="table-datas-container">
@@ -54,10 +58,10 @@ export default {
   methods: {
     displayTempByLevel() {
       if(typeof this.weather.main != 'undefined') {
-        if(this.weather.main.temp >= 30) {
+        if(this.weather.main.temp >= 25) {
           return 'warm';
         }
-        else if(this.weather.main.temp < 30 && this.weather.main.temp > 15) {
+        else if(this.weather.main.temp < 25 && this.weather.main.temp > 15) {
           return 'middle'
         }
         else {
@@ -139,7 +143,8 @@ body {
       font-size: 22px;
     }
     .weather-container .weather-now {
-      font-size: 26px;
+      font-size: 78px;
+      padding: 45px 0;
     }
     .weather-container .temperature-now {
       font-size: 72px;
@@ -166,7 +171,8 @@ body {
       padding-top: 1.5em;
     }
     .weather-container .weather-now {
-      font-size: 48px;
+      font-size: 100px;
+      padding: 0.65em 0;
     }
     .weather-container .temperature-now {
       font-size: 160px;
@@ -190,15 +196,15 @@ body {
 }
 
 #app.warm {
-  background-image: linear-gradient(to bottom, rgba(250, 209, 7, 0.5), rgba(238, 255, 1, 0.5)),url('./assets/warm-weather.jpg');
+  background-image: linear-gradient(to bottom, rgba(250, 157, 7, 0.5), rgba(238, 255, 1, 0.5));
 }
 
 #app.middle {
-  background-image: linear-gradient(to bottom, rgba(88, 250, 7, 0.5), rgba(16, 151, 64, 0.5)),url('./assets/warm-weather.jpg');
+  background-image: linear-gradient(to bottom, rgba(88, 250, 7, 0.5), rgba(16, 151, 64, 0.5));
 }
 
 #app.cold {
-  background-image: linear-gradient(to bottom, rgba(7, 189, 250, 0.5), rgba(46, 122, 236, 0.5)),url('./assets/cold-weather.jpg');
+  background-image: linear-gradient(to bottom, rgba(7, 189, 250, 0.5), rgba(46, 122, 236, 0.5));
 }
 
 main {
@@ -269,7 +275,6 @@ main {
 .weather-container .weather-now {
   color: #FFF;
   font-weight: 600;
-  padding: 1.8em 0;
   font-style: italic;
   text-shadow: 3px 6px rgba(0, 0, 0, 0.25);
 }
