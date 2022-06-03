@@ -36,6 +36,22 @@
           <div class="wind-speed-now"><fa icon="wind" /> {{ weather.wind.speed }} m/s</div>
         </div>
 
+        <!-- <CContainer>
+          <CRow class="align-items-start">
+            <CCol>
+              <div class="pression-now"><fa icon="temperature-half" class="temperature-icon"/><br>{{ weather.main.pressure }} HPa</div>
+            </CCol>
+            <CCol>
+              <div class="humidity-now"><fa icon="droplet" /><br> {{ weather.main.humidity }}% </div>
+            </CCol>
+          </CRow>
+          <CRow class="align-items-start">
+            <CCol>
+              <div class="wind-speed-now"><fa icon="wind" /><br> {{ weather.wind.speed }} m/s</div>
+            </CCol>
+          </CRow>
+        </CContainer> -->
+
       </div>
 
     </main>
@@ -136,7 +152,6 @@ body {
     }
     .location-container {
       display: flex;
-      align-items:center;
       justify-content:space-between;
     }
     .location-container .location, .location-container .date {
@@ -152,8 +167,8 @@ body {
     .table-datas-container {
       font-size: 26px;
     }
-    .table-datas-container .humidity-now {
-      padding: 1.5em;
+    .pression-now, .humidity-now, .wind-speed-now {
+      font-size: 26px;
     }
 }
 
@@ -168,20 +183,19 @@ body {
     }
     .location-container .location, .location-container .date {
       font-size: 50px;
-      padding-top: 1.5em;
     }
     .weather-container .weather-now {
-      font-size: 100px;
-      padding: 0.65em 0;
+      font-size: 190px;
+      padding: 0.1em 0;
     }
     .weather-container .temperature-now {
-      font-size: 160px;
+      font-size: 140px;
     }
     .table-datas-container {
       font-size: 40px;
     }
-    .table-datas-container .humidity-now {
-      padding: 1.5em;
+    .pression-now, .humidity-now, .wind-speed-now {
+      font-size: 40px;
     }
 }
 
@@ -279,10 +293,11 @@ main {
   text-shadow: 3px 6px rgba(0, 0, 0, 0.25);
 }
 
-.table-datas-container .pression-now, .table-datas-container .humidity-now, .table-datas-container .wind-speed-now {
+.pression-now, .humidity-now, .wind-speed-now {
   color: #FFF;
   /* font-size: 34px; */
   font-weight: 400;
+  padding-bottom: 1.2em;
   font-style: italic;
   text-shadow: 3px 6px rgba(0, 0, 0, 0.25);
 }
